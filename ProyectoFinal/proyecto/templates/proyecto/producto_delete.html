@@ -1,0 +1,20 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Producto: Eliminar
+{% endblock header %}
+
+{% block main %}
+    <p>¿Estás seguro de que deseas eliminar a "{{ producto.nombre }}"?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirmar</button>
+        </form>
+
+        <!-- Botón para volver a la lista de clientes sin eliminar -->
+        <button>
+            <a href="{% url 'producto_list' %}"> Cancelar </a>
+        </button>
+{% endblock main %}
+

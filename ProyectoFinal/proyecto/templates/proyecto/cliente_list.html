@@ -1,0 +1,23 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Clientes: Registros
+{% endblock header %}
+
+{% block main %}
+    <button>
+        <a href="{% url 'cliente_create' %}"> Crear Registro</a>
+    </button>
+    
+    <ul>
+    {% for object in object_list %}
+        <li>
+            <p>{{ object.apellido | upper }}, {{ object.nombre }} ({{ object.celular }})</p>
+            <a href="{% url 'cliente_update' object.pk %}">Editar</a> |
+            <a href="{% url 'cliente_delete' object.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <p>No hay registros.</p>
+    {% endfor %}
+    </ul>
+{% endblock main %}

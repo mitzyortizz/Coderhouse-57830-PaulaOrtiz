@@ -1,0 +1,28 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Pedidos: Registros
+{% endblock header %}
+
+{% block main %}
+    <button>
+        <a href="{% url 'pedido_create' %}"> Crear Registro</a>
+    </button>
+    
+    <ul>
+    {% for object in object_list %}
+        <li>
+            <p>
+                Producto: {{ object.producto | upper }}<br>
+                Cliente: {{ object.cliente | upper }}<br>
+                Fecha: {{ object.fecha_entrega | date:"d/m/Y" }}<br>
+                Estado: {{ object.estado }}
+            </p>
+            <a href="{% url 'pedido_update' object.pk %}">Editar</a> |
+            <a href="{% url 'pedido_delete' object.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <p>No hay registros.</p>
+    {% endfor %}
+    </ul>
+{% endblock main %}

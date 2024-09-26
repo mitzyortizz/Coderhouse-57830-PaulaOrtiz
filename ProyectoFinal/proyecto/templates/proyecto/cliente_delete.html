@@ -1,0 +1,19 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Cliente: Eliminar
+{% endblock header %}
+
+{% block main %}
+    <p>¿Estás seguro de que deseas eliminar a {{ object.nombre }} {{ object.apellido }}?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirmar</button>
+        </form>
+
+        <!-- Botón para volver a la lista de clientes sin eliminar -->
+        <button>
+            <a href="{% url 'cliente_list' %}"> Cancelar </a>
+        </button>
+{% endblock main %}

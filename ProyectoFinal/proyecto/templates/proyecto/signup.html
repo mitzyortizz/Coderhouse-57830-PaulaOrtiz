@@ -1,0 +1,15 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Registro de Usuario
+{% endblock header %}
+
+{% block main %}
+    <h2>Regístrate</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrarse</button>
+    </form>
+    <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+{% endblock main %}

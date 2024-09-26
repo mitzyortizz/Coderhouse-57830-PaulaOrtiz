@@ -1,0 +1,18 @@
+{% extends 'Proyecto/base.html' %}
+
+{% block header %}
+Clientes: Editar Cliente
+{% endblock header %}
+
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+<!-- Botón para volver a la lista de clientes -->
+<button>
+    <a href="{% url 'cliente_list' %}"> Volver a la Lista </a>
+</button>
+{% endblock main %}
